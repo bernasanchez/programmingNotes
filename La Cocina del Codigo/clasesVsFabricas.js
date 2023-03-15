@@ -1,4 +1,110 @@
 /*
+*CLASES EN JAVASCRIPT 
+
+? QUE ES UNA CLASE?
+*Una clase es como un molde que define QUÉ PROPIEDADES Y MÉTODOS van a compartir un grupo de objetos.
+Ej. Es como un molde para hacer galletas. Todas las que hagamos con ese mismo molde van a salir de la misma manera
+
+? QUE ES UNA INSTANCIA?
+*Es un objeto creado a partir de una clase 
+*Ej. const sacha = new Persona('Sacha'): sacha es una instancia de la clase Persona
+
+!EN JS EN REALIDAD NO EXISTEN LAS CLASES 
+*EN JS EXISTE UN MODELO DE HERENCIA POR PROTOTIPOS O MODELO DE DELEGACION DE OBJETOS 
+
+*UNA CLASE Y SU CONSTRUCTOR SON LO MISMO EN JS
+
+!FUNCION CONSTRUCTORA 
+*SON FUNCIONES COMUNES/CORRIENTES Q USAMOS PARA CREAR INSTANCIAS DE UNA CLASE Y NOS PERMITEN REUTILIZAR EL CODIGO DE INICIALIZACION DE UNA INSTANCIA, CADA VEZ QUE QUERAMOS CREAR UNA
+
+*Para crear la clase Persona, vamos a escribir una F: 
+y para crear una persona, necesitamos un nombre, debe aceptar ese parametro
+? Cual es su estructura?
+1) El nombre de la FConst se escribe con PascalCase
+2) Si tenemos una FConst debe ser invocada con new
+
+function Persona(nombre){
+    this.nombre = nombre; //*Cuerpo de la FConst
+    //*this = {nombre: 'Sacha'}
+    //*return this (esta implicito gracias a new)
+}
+*const sacha = new Persona('Sacha')
+*Cada vez q instanciemos un obj de la clase Persona, se va a ejecutar la Funcion de arriba(const sacha = new Persona('Sacha'))
+
+?Que hace el operador New ?
+Cada vez que creamos una instancia de una clase, utilizamos el operador new antes de invocar a la FConst
+Este operador realiza lo siguiente: 
+1) Genera un obj vacio sin nada adentro: {}
+2) Invoca a la FConst con this apuntando a {} (this = {})
+3) this.nombre = nombre
+-this.nombre: el obj q esta siendo inicializado recibe una prop llamada nombre {nombre}
+-nombre: es el valor que recibimos por parametro{nombre:'Sacha'}
+4)Lo ultimo que hace new luego de ejecutar la FConst: retornar this. Nos devuelve el obj q acabamos de crear e inicializar 
+
+? Como se usan los prototipos en Js ?
+*JS NO TIENE CLASES. ES AZUCAR SINTACTICA. 
+*EL LENGUAJE ESTA BASADO EN PROTOTIPOS
+
+*Persona.prototype: 
+!Todas las F que no sean ArrowFunc(AF), tienen una propiedad llamada prototype. 
+!Prototype tiene asignada un objeto = {}
+
+? Como se usa esta propiedad prototype? 
+*1) Cuando usamos el operad new: js crea un {} vacio 
+*pero lo crea asignandole como prototipo, la propiedad prototype de la FConst que hayamos usado: 
+*{__proto__ : Persona.prototype}
+
+?Como funciona la cadena de prototipos?
+Ej: sacha.toString()
+Cuando queremos acceder a una prop sobre un objeto o ejecutar un metodo sobre el mismo: 
+1° Js se fija si esa prop o metodo existen en ese obj : sacha 
+2° Si no existe ahi se fija si existe en su prototipo a traves de la prop __proto__ Persona.prototype
+3° Si tampoco la encuentra, sigue avanzando por la cadena a ver si lo encuentra en el siguiente eslabon __proto__ Object.protot
+Y así hasta que encuentre la prop que andaba buscando o nos devuelva undefinded 
+*La cadena seria asi: 
+*sacha -- __proto__ Persona.prototype -- __proto__ Object.protot
+
+*Entonces si queremos agregar una prop/metodo p que cada instancia de nuestra clase pueda acceder, lo que tenemos que hacer es agregarla como propiedad de su prototipo (Persona.prototype):
+? Como lo hacemos? 
+Persona.prototype.saludar = function (){
+    clg('Hola, mi nombre es ${this.nombre})
+}
+*Agregamos un metodo sobre el prototipo de persona,  para que las instancias puedan saludar por clg imprimiendo su nombre 
+*const eric = new Persona('Eric')
+*const vicky = new Persona('Vicky')
+Ahora si la invocamos: vicky.saludar() o eric.saludar(), se imprime su nombre por consola, ya que pueden usar el metodo creado anteriormente. 
+
+? Como sabemos que un objeto es instancia de una clase? 
+*Usamos el OPERADOR INSTANCEOF: puedo verificar si la propiedad prototype de una clase aparece en algun lugar de la cadena de prototipos de un objeto.
+Ej. sacha instanceof Persona; //true
+sacha instanceof Object; //true
+
+!RESUMEN
+1)Js no tiene clases como otros lenguajes, es un lenguaje basado en prototipos 
+2)Cualquier F en js que no sea una AF, puede ser usada como FConstr
+3)Usamos FConst para crear nuevas instancias de una clase
+OPERADOR NEW: 
+1° Crea obj vacio con el protot de la clase 
+{__proto__ : Persona.prototype}
+2° Invoca a la FConst con este obj como valor p this 
+3° Ejecuta el cuerpo de la FConst p inicializar los valores en el obj creado 
+4° Al llegar al final, implicitamente retorna el obj creado, que se termina guardando en la var sacha
+----
+5)Para agregar prop/metodos comunes para todas las instancias, usamos el prototipo de nuestra clase: 
+ej. Persona.prototype.saludar ... 
+-------
+6)El operador instanceof nos dira si el prototipo de la clase aparece en algun lugar de la cadena de prototipos del objeto:
+ej. sacha instanceof Persona // true
+7)ECMASc15: clases con sintaxis mas clara y familiar
+
+
+
+
+
+
+
+---------------------------otro video---------------------------
+
 *MANERAS DE CREAS OBJETOS EN JS
 
 *1)CLASES EN JAVASCRIPT
@@ -129,18 +235,18 @@ const emitirSaludo = persona => {
 
 */
 
-class Persona{
-    constructor(nombre){
-        this.nombre = nombre;
-    }
-    saludar(){
-        console.log(`Hola, me llamo ${this.nombre}`); 
-    }
-}
-const sacha = new Persona('Sacha');
+// class Persona{
+//     constructor(nombre){
+//         this.nombre = nombre;
+//     }
+//     saludar(){
+//         console.log(`Hola, me llamo ${this.nombre}`); 
+//     }
+// }
+// const sacha = new Persona('Sacha');
 
-const crearPersona = ({nombre, apellido, twitter} = {}) => ({
-    nombre: nombre ?? 'Juan', 
-    apellido: apellido ?? 'Nadie',
-    twitter: twitter ?? 'juan_nadie'
-});
+// const crearPersona = ({nombre, apellido, twitter} = {}) => ({
+//     nombre: nombre ?? 'Juan', 
+//     apellido: apellido ?? 'Nadie',
+//     twitter: twitter ?? 'juan_nadie'
+// });
