@@ -85,13 +85,13 @@ const numerosUnicos = numeros.filter((numero, posicion, numeros) => {
 !3) REDUCE (Reducir array a un unico valor)
 *Pensarlo como una "prensa de cafe": necesita un array y un valor inicial que le indicamos nosotros. Con cada vuelta de la palanca, opera con el valor que va acumulando con cada elemento del array. Tras operar con todos los elem, obtenemos un UNICO VALOR COMO RESULTADO
 Ej.
-1° Param: F reductora: recibe como param el acumulador (que valor tiene el accum antes de "girar la palanca" )
-2° Valor inicial: en este caso el 0
-3° Elem Actual: numero
+*1° Param: F reductora: recibe como param el acumulador (que valor tiene el accum antes de "girar la palanca" )
+*2° Valor inicial: en este caso el 0
+*3° Elem Actual: numero
 *Dentro de la F reductora tenemos que retornar el valor del accumulador actualizado 
 
-const numeros = [3,10,20,50]
-let total = numeros.reduce((acumulador, numero) => acumulador + numero, 0); 
+*const numeros = [3,10,20,50]
+*let total = numeros.reduce((acumulador, numero) => acumulador + numero, 0); 
 
 !Importante: el valor inicial lo podemos omitir y va a tomar el valor en pos 0 del array y desde alli comenzara a acumular
 

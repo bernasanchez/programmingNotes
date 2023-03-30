@@ -1,7 +1,7 @@
 /*
-    TIPOS DE DATOS EN JS
+    !TIPOS DE DATOS EN JS
 
-    1)PRIMITIVOS
+    *1)PRIMITIVOS
     -STRINGS
     -NUMBERS
     -BOOLEAN
@@ -21,7 +21,7 @@
     Las var en js son independientes
 
 
-    CON OBJETOS PASA ALGO DISTINTO:
+    *CON OBJETOS PASA ALGO DISTINTO:
     Los objetos son obj literales, funciones, arrays, cualquier cosa que no sea un valor primitivo
     El espacio que ocupa un obj en memoria puede ir variando(HEP: memoria dinamica destinada a almacenar objetos). 
 
@@ -49,7 +49,7 @@
     Ese cambio se realiza en el objeto al que ambas hacen referencia y como ambas apuntan al mismo objeto si accedemos a las propiedades de :
     fruta2.cantidad: el valor es 3 tambien (se modifico tambien)
 
-    2 FUNCIONES Y VARIABLES
+    *2 FUNCIONES Y VARIABLES
 
     funcion comer(cantidad){
         cantidad = cantidad - 1;    (FUNCION COMER)
@@ -64,7 +64,7 @@
     
     Si existe un cambio dentro de la var de la funcion, la variable que esta afuera no se va a modificar, son independientes. Cuando se termine la ejec de esa funcion, las variables se descartan
 
-    EN OBJETOS:
+    *EN OBJETOS:
     Si le pasamos un obj como parametro, se copia la referencia que apunta al objeto(eJ A5FF4).
     Ahora ambas var tienen la misma referencia ocupando el mismo espacio de memoria. Si dentro de la F se modifica alguna prop del objeto, esta moodificacion se va a realizar sobre el objeto mismo.
     Cuando se termine de ejecutar la F, continuamos con la misma referencia y el objeto va a estar modificado

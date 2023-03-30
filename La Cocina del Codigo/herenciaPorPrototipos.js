@@ -7,14 +7,14 @@
 
 *HERENCIA POR CLASES(este es el tradicional en otros lenguajes):
 Uno de los pilares de la prog orientada a OBJETOS
-Este metodo permite que una clase herede los metodos/prop definidas en otra clase 
+*Este metodo permite que una clase herede los metodos/prop definidas en otra clase 
 De esta manera, los obj de una subclase van a tener acceso no solo a sus prop/metodos, sino tambien en loq q esten definidos en la superclase
 
 *HERENCIA POR PROTOTIPOS EN JS 
 
 ?QUE ES UN PROTOTIPO ? (PROTOTYPE)
 *Es como un DELEGADO: alguien a quien le delegamos algo, cierta responsabilidad 
-Ese "alguien" (que realiza la tarea por vos), es el prototipo
+*Ese "alguien" (que realiza la tarea por vos), es el prototipo
 Ej. Tenemos dos objetos que queremos "relacionar": 
 
 const chef = {
@@ -129,7 +129,7 @@ sacha.cocinar = function(){
 !Esta F se agrega al obj sacha pero el prototipo no se ve modificado(cheff). Como estamos ASIGNANDO UNA PROP NO SE RECORRE LA CADENA DE PROTOTIPOS. Esta solo se recorre cuando queremos leer una propiedad
 
 ? Como saber si un obj es el prototipo de otro?
-1) Si queremos saber si cheff es el protot de sacha: 
+*1) Si queremos saber si cheff es el protot de sacha: 
 sacha.__proto__ === cheff //true
 Como esta prop apunta directamente al protot del obj, en este caso van a ser iguales (no deberiamos usarla)
 
